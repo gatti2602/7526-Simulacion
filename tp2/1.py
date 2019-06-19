@@ -9,14 +9,14 @@ import math
 def Simular_Mem_Access(type):
 	if type == 1:
 		#Sin cache
-		return '-', np.random.exponential(scale=1/2000)
+		return '-', np.random.exponential(scale=2000)
 	else:
-		time = np.random.exponential(scale=1/500)
+		time = np.random.exponential(scale=500)
 		if np.random.uniform() < .6:
 			#Cache Hit
 			return 'Hit', time
 		else: 
-			return 'Miss', time + np.random.exponential(scale=1/1500)
+			return 'Miss', time + np.random.exponential(scale=1500)
 
 def Simular_Instruccion(type):
 	"""
@@ -44,12 +44,13 @@ sim2 = Simular_Instruccion(2)
 n = 100000
 res1 = np.zeros(n)
 res2 = np.zeros(n)
+print('alternative i_type mem cache time')
 for i in range(n):
 	_, _, _, res1[i] = next(sim1)
 	_, _, _, res2[i] = next(sim2)
 
-print(round(res1.mean(), 5))
-print(round(res2.mean(), 5))
+#print(round(res1.mean(), 5))
+#print(round(res2.mean(), 5))
  
 	
 

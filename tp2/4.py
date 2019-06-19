@@ -20,11 +20,11 @@ class Instruction(object):
 	def _Simular_Mem_Access(self):
 		if self.type == 1:
 			#Sin cache
-			return np.random.exponential(scale=1./2000)
+			return np.random.exponential(scale=2000)
 		else:
-			time = np.random.exponential(scale=1./500)
+			time = np.random.exponential(scale=500)
 			if self.cache == 'miss':
-				time = time + np.random.exponential(scale=1./1500)
+				time = time + np.random.exponential(scale=1500)
 			return time
 
 	def run(self, core):
@@ -49,9 +49,10 @@ def SimularInstrucciones(env, amount, type):
         instr = Instruction(env,type)
 		#instr = Instruction(env,2) #Cambiar para sim con cache
         env.process(instr.run(core))
-        t = np.random.exponential(scale = 1./250)
+        t = np.random.exponential(scale = 250)
         yield env.timeout(t)
 
+print('alternative i_type mem cache time')
 amount = 100000
 env = simpy.Environment()
 env.process(SimularInstrucciones(env, amount, 1))
