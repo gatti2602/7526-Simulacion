@@ -12,6 +12,9 @@ class Checkout(object):
 
     def serve(self, client):
         cashier = self.select_cashier()
+        global queue
+        if (queue < len(cashier.queue)):
+            queue = len(cashier.queue)
         with cashier.request() as req:
             yield req
             yield self.env.timeout(client.get_pay_duration())
@@ -31,7 +34,12 @@ class Client(object):
         self.type = numpy.random.choice(['A', 'B', 'C'], p=[0.6, 0.25, 0.15])
 
     def pay(self, checkout):
+        arrive = self.env.now
         yield self.env.process(checkout.serve(self))
+        wait = self.env.now - arrive
+        global max_wait_time
+        if (max_wait_time < wait):
+            max_wait_time = wait
         print("%.2f Client type %s attended" % (self.env.now, self.type))
 
     def get_pay_duration(self):
@@ -46,6 +54,8 @@ class Client(object):
 cashier_count = 6
 arrival_rate = 0.045
 client_count = 100
+queue = 0
+max_wait_time = 0
 
 def generate_clients(environment, count, interval, checkout):
     for i in range(count):
@@ -59,3 +69,6 @@ env = simpy.Environment()
 checkout = Checkout(env, cashier_count)
 env.process(generate_clients(env, client_count, arrival_rate, checkout))
 env.run()
+
+print("Max queue: %.2f" % (queue))
+print("MAx wait time: %.2f" % (max_wait_time))
