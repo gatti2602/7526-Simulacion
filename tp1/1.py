@@ -20,7 +20,7 @@ class GCL():
         number = self.random(self.current)
         return number
 
-seed = 97198
+seed = 971981
 generator = GCL(seed)
 total_samples = 100000
 numbers = []

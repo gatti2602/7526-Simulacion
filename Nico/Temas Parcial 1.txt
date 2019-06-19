@@ -1,0 +1,45 @@
+Calculo de avas y aves
+Calculo del resto con calc
+
+Temas parcial
+
+Gen lineal congruente
+---------------------
+
+Transf Inversa
+Aceptacion Rechazo: Calculo C	
+Test de hipotesis
+
+Markov:
+-------
+	* Matriz de estado, que significa cada posicion
+	* Grafo
+	* Clasif de estado
+	* pi = pi * P
+	* Prob limite
+
+Proc. Poisson
+-------------
+
+Sist. Dinamicos:
+----------------
+* Clasificacion: 
+	* Linales/No Lineales 
+	* Autonomos/No Aut.
+	* Orden
+
+### Discretos:
+* Lineales: 
+	* AVAS, AVA Dominante
+	* Estable, Inestable
+	* Pto Fijo, Atractor, Repulsor
+
+* No lineales: 
+	* Ptos de Equilibrios
+	* Jacobiano
+	* avas de Jacob.
+	
+### Continuos: 
+* Lineales
+* No lineales
+	
