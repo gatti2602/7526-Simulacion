@@ -3,6 +3,15 @@ import numpy as np
 import simpy as sp
 import math
 
+def matrixMul(a, n):
+    if(n == 1):
+        return a
+    else:
+        tempArr = a;
+        for i in range(1, n-1):
+            tempArr = np.matmul(a, tempArr)
+        return tempArr
+
 def aumenta(i, j):
 	global N
 	M = N-1
@@ -32,4 +41,11 @@ for i in range(N):
 			array[i][j] = disminuye(i, j)
 			#array[i][j] = array[i][j]
 
+newarray = matrixMul(array, 1000)
+sum = 0
+for i in range(40, 50):
+    sum += newarray[i][0]
+
 print(array)
+print(newarray)
+print(sum)
