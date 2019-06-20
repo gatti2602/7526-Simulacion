@@ -12,13 +12,6 @@ def aumenta(i, j):
 	return (combinations) * (p**(j-i)) * ((1-p)**(M-(j-i)))
 
 def disminuye(i, j):
-<<<<<<< HEAD
-    global N
-    sumatoria = 0
-    for z in range(i,N):
-        sumatoria += aumenta(i, z)
-    return (1 - sumatoria) / (i - 1)
-=======
 	global N
 	sumatoria = 0
 	for z in range(i,N):
@@ -26,7 +19,6 @@ def disminuye(i, j):
 		sumatoria += aumenta(i, z)
 
 	return (1 - sumatoria) / (i)
->>>>>>> 12aa480dac386f965e83e3d4f32288abe3d733b4
 
 N = 50
 p = 0.7
