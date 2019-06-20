@@ -3,8 +3,6 @@ import numpy as np
 import simpy as sp
 import math
 
-
-
 def aumenta(i, j):
     global N
     global p
@@ -17,7 +15,6 @@ def disminuye(i, j):
     sumatoria = 0
     for z in range(i,N):
         sumatoria += aumenta(i, z)
-
     return (1 - sumatoria) / (i - 1)
 
 N = 3
