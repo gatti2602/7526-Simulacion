@@ -5,7 +5,14 @@ import pandas as pd
 import matplotlib.pyplot as mp
 import math
 
-
+def matrixMul(a, n):
+    if(n == 1):
+        return a
+    else:
+        tempArr = a;
+        for i in range(1, n-1):
+            tempArr = np.matmul(a, tempArr)
+        return tempArr
 
 def aumenta(i, j):
 	global N
@@ -36,6 +43,7 @@ for i in range(N):
 			#array[i][j] = array[i][j]
 
 #print(array)
+
 #Punto b			
 values = [i for i in range(N)]
 #Inicio vacio
@@ -52,6 +60,7 @@ plot = clients.plot(x='step',y='clients')
 plot.set_title('Clientes por step')
 mp.savefig("2-b.png")	
 
+#Punto C
 actual_clients = 0
 clients = [[0,0]]
 for i in range(1,100000):
@@ -65,3 +74,14 @@ mp.hist(clients['clients'], bins=51)
 mp.title('Histograma de estados')
 mp.xlabel('Estados')
 mp.savefig("2-c.png")	
+
+#Punto D y E
+newarray = matrixMul(array, 1000)
+sum = 0
+for i in range(40, 50):
+    sum += newarray[i][0]
+
+print(array)
+print(newarray)
+print(sum)
+
