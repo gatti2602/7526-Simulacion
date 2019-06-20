@@ -24,12 +24,11 @@ def disminuye(i, j):
 	global N
 	sumatoria = 0
 	for z in range(i,N):
-		print(i,N,z)
 		sumatoria += aumenta(i, z)
 
 	return (1 - sumatoria) / (i)
 
-N = 50
+N = 51
 p = 0.7
 array = np.zeros((N,N))
 
@@ -45,6 +44,20 @@ newarray = matrixMul(array, 1000)
 sum = 0
 for i in range(40, 50):
     sum += newarray[i][0]
+
+#Punto b
+clientes=[]
+values = [i for i in range(N)]
+
+#Inicio vacio
+pi = np.zeros(N)
+pi[0] = 1
+
+for i in range(10):
+	pi = array.dot(pi)
+	print(pi)
+	value = np.random.choice(values, p=pi)
+clientes.append([i, value])
 
 print(array)
 print(newarray)
