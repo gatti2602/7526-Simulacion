@@ -1,6 +1,8 @@
 
 import numpy as np
 import simpy as sp
+import pandas as pd
+import matplotlib.pyplot as mp
 import math
 
 
@@ -33,20 +35,33 @@ for i in range(N):
 			array[i][j] = disminuye(i, j)
 			#array[i][j] = array[i][j]
 
-print(array)
+#print(array)
 #Punto b			
-clientes=[]
 values = [i for i in range(N)]
-
 #Inicio vacio
-pi = np.zeros(N)
-pi[0] = 1
+actual_clients = 0
+clients = [[0,0]]
+for i in range(1,100):
+	actual_clients = np.random.choice(values, p=array[actual_clients])
+	clients.append([i, actual_clients])
 
-for i in range(10):
-	pi = array.dot(pi)
-	print(pi)
-	value = np.random.choice(values, p=pi)
-	clientes.append([i, value])
-	
+clients = pd.DataFrame(clients)
+clients.columns = ['step','clients']
+mp.figure()
+plot = clients.plot(x='step',y='clients')
+plot.set_title('Clientes por step')
+mp.savefig("2-b.png")	
 
+actual_clients = 0
+clients = [[0,0]]
+for i in range(1,100000):
+	actual_clients = np.random.choice(values, p=array[actual_clients])
+	clients.append([i, actual_clients])
 
+clients = pd.DataFrame(clients)
+clients.columns = ['step','clients']
+mp.figure()
+mp.hist(clients['clients'], bins=51)
+mp.title('Histograma de estados')
+mp.xlabel('Estados')
+mp.savefig("2-c.png")	
