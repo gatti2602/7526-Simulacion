@@ -21,7 +21,7 @@ def disminuye(i, j):
 
 	return (1 - sumatoria) / (i)
 
-N = 4
+N = 51
 p = 0.7
 array = np.zeros((N,N))
 
@@ -33,7 +33,7 @@ for i in range(N):
 			array[i][j] = disminuye(i, j)
 			#array[i][j] = array[i][j]
 
-
+print(array)
 #Punto b			
 clientes=[]
 values = [i for i in range(N)]
